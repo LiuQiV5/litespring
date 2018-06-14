@@ -1,6 +1,6 @@
 package com.liuqi.beans.factory;
 
-import com.liuqi.beans.definition.BeanDefinition;
+import com.liuqi.beans.BeanDefinition;
 
 public interface BeanFactory {
 

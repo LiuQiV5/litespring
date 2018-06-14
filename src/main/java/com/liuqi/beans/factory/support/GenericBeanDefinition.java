@@ -1,6 +1,6 @@
-package com.liuqi.support;
+package com.liuqi.beans.factory.support;
 
-import com.liuqi.beans.definition.BeanDefinition;
+import com.liuqi.beans.BeanDefinition;
 
 public class GenericBeanDefinition implements BeanDefinition {
     private String id;

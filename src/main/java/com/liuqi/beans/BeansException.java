@@ -1,4 +1,4 @@
-package com.liuqi.beans.definition;
+package com.liuqi.beans;
 
 public class BeansException extends  RuntimeException {
 

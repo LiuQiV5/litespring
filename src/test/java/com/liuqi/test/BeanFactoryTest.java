@@ -1,11 +1,11 @@
 package com.liuqi.test;
 
-import com.liuqi.beans.definition.BeanDefinition;
+import com.liuqi.beans.BeanDefinition;
 import com.liuqi.beans.factory.BeanCreationException;
 import com.liuqi.beans.factory.BeanDefinitionStoreException;
 import com.liuqi.beans.factory.BeanFactory;
 import com.liuqi.service.PetStoreService;
-import com.liuqi.support.DefaultBeanFactory;
+import com.liuqi.beans.factory.support.DefaultBeanFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
 package com.liuqi.beans.factory;
 
-import com.liuqi.beans.definition.BeansException;
+import com.liuqi.beans.BeansException;
 
 public class BeanDefinitionStoreException extends BeansException {
 
