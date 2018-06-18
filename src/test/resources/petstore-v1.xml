@@ -5,4 +5,6 @@
     <bean id="petstore" class="com.liuqi.service.PetStoreService"></bean>
 
     <bean id="invalidBean" class="xxxxxxx.xx"></bean>
+
+    <bean id="prototypeBean" class="com.liuqi.service.PetStoreService" scope="prototype"></bean>
 </beans>
