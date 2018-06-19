@@ -25,7 +25,7 @@ public class ClassPathResource implements Resource {
     public InputStream getInputStream() throws IOException {
         InputStream is = this.classLoader.getResourceAsStream(this.path);
         if (is == null) {
-            throw new FileNotFoundException(path + "cannot be opened");
+            throw new FileNotFoundException(path + " cannot be opened");
         }
         return is;
     }
