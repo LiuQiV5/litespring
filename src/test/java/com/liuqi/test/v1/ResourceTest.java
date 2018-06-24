@@ -1,4 +1,4 @@
-package com.liuqi.test;
+package com.liuqi.test.v1;
 
 import com.liuqi.core.io.ClassPathResource;
 import com.liuqi.core.io.FileSystemResource;

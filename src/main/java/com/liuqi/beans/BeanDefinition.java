@@ -1,5 +1,7 @@
 package com.liuqi.beans;
 
+import java.util.List;
+
 public interface BeanDefinition {
 
     public static final String SCOPE_SINGLETON = "singleton";
@@ -13,4 +15,6 @@ public interface BeanDefinition {
     void setScope(String scope);
 
     String getBeanClassName();
+
+    List<PropertyValue> getPropertyValues();
 }

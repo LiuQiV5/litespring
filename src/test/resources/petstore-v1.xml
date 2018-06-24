@@ -2,9 +2,9 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="petstore" class="com.liuqi.service.PetStoreService"></bean>
+    <bean id="petstore" class="com.liuqi.service.v1.PetStoreService"></bean>
 
     <bean id="invalidBean" class="xxxxxxx.xx"></bean>
 
-    <bean id="prototypeBean" class="com.liuqi.service.PetStoreService" scope="prototype"></bean>
+    <bean id="prototypeBean" class="com.liuqi.service.v1.PetStoreService" scope="prototype"></bean>
 </beans>

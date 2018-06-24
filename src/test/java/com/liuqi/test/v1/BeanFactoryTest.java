@@ -1,4 +1,4 @@
-package com.liuqi.test;
+package com.liuqi.test.v1;
 
 import com.liuqi.beans.BeanDefinition;
 import com.liuqi.beans.factory.BeanCreationException;
@@ -6,7 +6,7 @@ import com.liuqi.beans.factory.BeanDefinitionStoreException;
 import com.liuqi.beans.factory.xml.XmlBeanDefinitionReader;
 import com.liuqi.core.io.ClassPathResource;
 import com.liuqi.core.io.Resource;
-import com.liuqi.service.PetStoreService;
+import com.liuqi.service.v1.PetStoreService;
 import com.liuqi.beans.factory.support.DefaultBeanFactory;
 import org.junit.Assert;
 import org.junit.Before;
@@ -40,7 +40,7 @@ public class BeanFactoryTest {
 
         assertEquals(BeanDefinition.SCOPE_DEFAULT,bd.getScope());
 
-        assertEquals("com.liuqi.service.PetStoreService",bd.getBeanClassName());
+        assertEquals("com.liuqi.service.v1.PetStoreService",bd.getBeanClassName());
 
         PetStoreService petstore = (PetStoreService)factory.getBean("petstore");
 
@@ -92,7 +92,7 @@ public class BeanFactoryTest {
 
         assertEquals(BeanDefinition.SCOPE_PROTOTYPE,bd.getScope());
 
-        assertEquals("com.liuqi.service.PetStoreService",bd.getBeanClassName());
+        assertEquals("com.liuqi.service.v1.PetStoreService",bd.getBeanClassName());
 
         PetStoreService petstore = (PetStoreService)factory.getBean("prototypeBean");
 
