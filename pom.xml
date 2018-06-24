@@ -49,6 +49,15 @@
   </dependencies>
 
   <build>
+    <!--解决Intellij构建项目时，target/classes目录下不存在***.xml文件-->
+    <resources>
+      <resource>
+        <directory>${basedir}/src/test/resources</directory>
+        <includes>
+          <include>**/*.xml</include>
+        </includes>
+      </resource>
+    </resources>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
         <plugin>
