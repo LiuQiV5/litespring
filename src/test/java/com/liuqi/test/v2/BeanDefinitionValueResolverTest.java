@@ -1,6 +1,5 @@
 package com.liuqi.test.v2;
 
-import com.liuqi.beans.BeanDefinition;
 import com.liuqi.beans.factory.config.RuntimeBeanReference;
 import com.liuqi.beans.factory.config.TypedStringValue;
 import com.liuqi.beans.factory.support.BeanDefinitionValueResolver;
