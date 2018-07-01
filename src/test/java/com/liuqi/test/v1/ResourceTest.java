@@ -27,7 +27,7 @@ public class ResourceTest {
 
     @Test
     public void testFileSystemResource()throws Exception{
-        Resource r = new FileSystemResource("E:\\idea_workspace\\litespring\\src\\test\\resources\\petstore-v1.xml");
+        Resource r = new FileSystemResource("src\\test\\resources\\petstore-v1.xml");
 
         InputStream is = null;
         try {

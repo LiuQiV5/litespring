@@ -1,13 +1,14 @@
 package com.liuqi.beans.factory.support;
 
+import com.liuqi.beans.factory.BeanFactory;
 import com.liuqi.beans.factory.config.RuntimeBeanReference;
 import com.liuqi.beans.factory.config.TypedStringValue;
 
 public class BeanDefinitionValueResolver {
 
-    private final DefaultBeanFactory beanFactory;
+    private final BeanFactory beanFactory;
 
-    public BeanDefinitionValueResolver(DefaultBeanFactory factory) {
+    public BeanDefinitionValueResolver(BeanFactory factory) {
         this.beanFactory = factory;
     }
 

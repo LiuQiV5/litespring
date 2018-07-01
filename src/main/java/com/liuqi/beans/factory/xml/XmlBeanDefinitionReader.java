@@ -1,6 +1,7 @@
 package com.liuqi.beans.factory.xml;
 
 import com.liuqi.beans.BeanDefinition;
+import com.liuqi.beans.ConstructorArgument;
 import com.liuqi.beans.PropertyValue;
 import com.liuqi.beans.factory.BeanDefinitionStoreException;
 import com.liuqi.beans.factory.config.RuntimeBeanReference;
@@ -34,6 +35,10 @@ public class XmlBeanDefinitionReader {
     public static final String VALUE_ATTRIBUTE = "value";
 
     public static final String NAME_ATTRIBUTE = "name";
+
+    public static final String CONSTRUCTOR_ARG_ELEMENT = "constructor-arg";
+
+    public static final String TYPE_ATTRIBUTE = "type";
 
     BeanDefinitionRegistry registry;
 
@@ -69,6 +74,8 @@ public class XmlBeanDefinitionReader {
                     bd.setScope(ele.attributeValue(SCOPE_ATTRIBUTE));
                 }
 
+                //解析xml将constructorArgument设置进bd
+                parseConstructorArgElements(ele,bd);
                 //解析xml将property设置进bd
                 parsePropertyElement(ele,bd);
 
@@ -86,6 +93,30 @@ public class XmlBeanDefinitionReader {
             }
         }
 
+    }
+
+    private void parseConstructorArgElements(Element beanEle, BeanDefinition bd) {
+        Iterator iter = beanEle.elementIterator(CONSTRUCTOR_ARG_ELEMENT);
+        while(iter.hasNext()){
+            Element ele = (Element)iter.next();
+            parseConstructorArgElement(ele, bd);
+        }
+    }
+
+    private void parseConstructorArgElement(Element ele, BeanDefinition bd) {
+
+        String typeAttr = ele.attributeValue(TYPE_ATTRIBUTE);
+        String nameAttr = ele.attributeValue(NAME_ATTRIBUTE);
+        Object value = parsePropertyValue(ele, bd, null);
+        ConstructorArgument.ValueHolder valueHolder = new ConstructorArgument.ValueHolder(value);
+        if (StringUtils.hasLength(typeAttr)) {
+            valueHolder.setType(typeAttr);
+        }
+        if (StringUtils.hasLength(nameAttr)) {
+            valueHolder.setName(nameAttr);
+        }
+
+        bd.getConstructorArgument().addArgumentValue(valueHolder);
     }
 
     private void parsePropertyElement(Element ele, BeanDefinition bd) {

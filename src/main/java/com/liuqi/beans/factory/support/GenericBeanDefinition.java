@@ -1,6 +1,7 @@
 package com.liuqi.beans.factory.support;
 
 import com.liuqi.beans.BeanDefinition;
+import com.liuqi.beans.ConstructorArgument;
 import com.liuqi.beans.PropertyValue;
 
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ public class GenericBeanDefinition implements BeanDefinition {
     private String scope = SCOPE_DEFAULT;
 
     List<PropertyValue> propertyValueList = new ArrayList<>();
+
+    private ConstructorArgument constructorArgument = new ConstructorArgument();
 
     public GenericBeanDefinition(String id, String beanClassName) {
         this.id = id;
@@ -54,5 +57,20 @@ public class GenericBeanDefinition implements BeanDefinition {
     @Override
     public List<PropertyValue> getPropertyValues() {
         return this.propertyValueList;
+    }
+
+    @Override
+    public ConstructorArgument getConstructorArgument() {
+        return this.constructorArgument;
+    }
+
+    @Override
+    public String getID() {
+        return id;
+    }
+
+    @Override
+    public boolean hasConstructorArgumentValues() {
+        return !this.constructorArgument.isEmpty();
     }
 }
