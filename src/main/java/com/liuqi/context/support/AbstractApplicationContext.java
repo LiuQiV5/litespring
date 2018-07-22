@@ -1,5 +1,7 @@
 package com.liuqi.context.support;
 
+import com.liuqi.beans.factory.annotation.AutowiredAnnotationProcessor;
+import com.liuqi.beans.factory.config.ConfigurableBeanFactory;
 import com.liuqi.beans.factory.support.DefaultBeanFactory;
 import com.liuqi.beans.factory.xml.XmlBeanDefinitionReader;
 import com.liuqi.context.ApplicationContext;
@@ -16,6 +18,7 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         Resource resource = this.getResourceByPath(configfile);
         reader.loadBeanDefinition(resource);
         factory.setBeanClassLoader(this.getBeanClassLoader());
+        registerBeanPostProcessors(factory);
     }
 
     @Override
@@ -25,13 +28,19 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
 
     protected abstract Resource getResourceByPath(String path);
 
-    @Override
     public void setBeanClassLoader(ClassLoader beanClassLoader) {
         this.beanClassLoader = beanClassLoader;
     }
 
-    @Override
     public ClassLoader getBeanClassLoader() {
         return (this.beanClassLoader != null ? this.beanClassLoader : ClassUtils.getDefaultClassLoader());
+    }
+
+    protected void registerBeanPostProcessors(ConfigurableBeanFactory beanFactory) {
+
+        AutowiredAnnotationProcessor postProcessor = new AutowiredAnnotationProcessor();
+        postProcessor.setBeanFactory(beanFactory);
+        beanFactory.addBeanPostProcessor(postProcessor);
+
     }
 }

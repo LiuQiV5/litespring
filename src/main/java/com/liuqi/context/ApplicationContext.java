@@ -1,6 +1,6 @@
 package com.liuqi.context;
 
-import com.liuqi.beans.factory.config.ConfigurableBeanFactory;
+import com.liuqi.beans.factory.BeanFactory;
 
-public interface ApplicationContext extends ConfigurableBeanFactory {
+public interface ApplicationContext extends BeanFactory {
 }
