@@ -1,5 +1,6 @@
 package com.liuqi.beans;
 
+
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,13 +17,14 @@ public class ConstructorArgument {
     }
 
 
-
+    public void addArgumentValue(Object value) {
+        this.argumentValues.add(new ValueHolder(value));
+    }
 
     public void addArgumentValue(ValueHolder valueHolder) {
         this.argumentValues.add(valueHolder);
     }
 
-    //获取一个不能改变的list
     public List<ValueHolder> getArgumentValues() {
         return Collections.unmodifiableList(this.argumentValues);
     }
@@ -104,4 +106,5 @@ public class ConstructorArgument {
             return this.name;
         }
     }
+
 }

@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 public class DependencyDescriptor {
 
-    private  Field field;
+    private Field field;
     private boolean required;
 
     public DependencyDescriptor(Field field, boolean required) {

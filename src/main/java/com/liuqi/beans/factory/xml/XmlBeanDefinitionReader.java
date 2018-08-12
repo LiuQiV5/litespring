@@ -1,5 +1,6 @@
 package com.liuqi.beans.factory.xml;
 
+import com.liuqi.aop.config.ConfigBeanDefinitionParser;
 import com.liuqi.beans.BeanDefinition;
 import com.liuqi.beans.ConstructorArgument;
 import com.liuqi.beans.PropertyValue;
@@ -45,6 +46,8 @@ public class XmlBeanDefinitionReader {
 
     public static final String CONTEXT_NAMESPACE_URI = "http://www.springframework.org/schema/context";
 
+    public static final String AOP_NAMESPACE_URI = "http://www.springframework.org/schema/aop";
+
     private static final String BASE_PACKAGE_ATTRIBUTE = "base-package";
 
     BeanDefinitionRegistry registry;
@@ -76,6 +79,8 @@ public class XmlBeanDefinitionReader {
                     parseDefaultElement(ele); //普通的bean
                 } else if(this.isContextNamespace(namespaceUri)){
                     parseComponentElement(ele); //例如<context:component-scan>
+                } else if(this.isAOPNamespace(namespaceUri)){
+                    parseAOPElement(ele);  //例如 <aop:config>
                 }
 
             }
@@ -98,6 +103,11 @@ public class XmlBeanDefinitionReader {
         String basePackages = ele.attributeValue(BASE_PACKAGE_ATTRIBUTE);
         ClassPathBeanDefinitionScanner scanner = new ClassPathBeanDefinitionScanner(registry);
         scanner.doScan(basePackages);
+    }
+
+    private void parseAOPElement(Element ele){
+        ConfigBeanDefinitionParser parser = new ConfigBeanDefinitionParser();
+        parser.parse(ele, this.registry);
     }
 
     private void parseDefaultElement(Element ele) {
@@ -125,6 +135,10 @@ public class XmlBeanDefinitionReader {
     }
     public boolean isContextNamespace(String namespaceUri){
         return (!StringUtils.hasLength(namespaceUri) || CONTEXT_NAMESPACE_URI.equals(namespaceUri));
+    }
+
+    public boolean isAOPNamespace(String namespaceUri){
+        return (!StringUtils.hasLength(namespaceUri) || AOP_NAMESPACE_URI.equals(namespaceUri));
     }
 
     private void parseConstructorArgElements(Element beanEle, BeanDefinition bd) {
